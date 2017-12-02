@@ -1,10 +1,11 @@
 class Location
-  attr_accessor :connections, :name, :visited, :fn, :id
+  attr_accessor :connections, :name, :visited, :fn, :id,
 
   def initialize(name)
     @name = name
     @connections = Set.new
     @visited = false
+    @ants = Set.new
   end
 
   def ==(other)

@@ -1,8 +1,9 @@
-require 'ant'
-require 'ant_colony'
-require 'location'
-require 'map'
-require 'road'
+require "#{File.dirname(__FILE__)}/ant"
+require "#{File.dirname(__FILE__)}/ant_colony"
+require "#{File.dirname(__FILE__)}/location"
+require "#{File.dirname(__FILE__)}/map"
+require "#{File.dirname(__FILE__)}/road"
+require 'set'
 
 ALPHA = 1.0
 BETA = 1.0
@@ -10,7 +11,7 @@ RHO = 0.95
 Q = 100
 
 def create_location(string)
-  Location.new string
+  Location.new(string)
 end
 
 def create_road(string)
@@ -19,7 +20,7 @@ def create_road(string)
 end
 
 def process_input
-  input = File.open('../input.txt', 'r')
+  input = File.open('input.txt', 'r')
   locations = Set.new
   roads = Set.new
 
@@ -41,12 +42,12 @@ end
 
 map = process_input
 should_print = false
-output = File.open('../output.txt', 'w')
+output = File.open('output.txt', 'w')
 
 colonies = []
 
 [0..10].each do |colony|
-  colonies << AntColony.new colony
+  colonies << AntColony.new(colony)
 end
 
 [0..25].each do |cycle|
@@ -54,7 +55,7 @@ end
     pheromones = []
     should_print = true if colony == colonies.last
     colony.ants.each do |ant|
-      pheromones << ant.move_around should_print, output
+      pheromones << ant.move_around(should_print, output)
     end
   end
   map.update_pheromones pheromones, RHO

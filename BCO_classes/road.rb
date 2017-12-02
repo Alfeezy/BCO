@@ -43,4 +43,8 @@ class Road
 			loc1
 		end
 	end
+
+  def self.find_road(location1, location2)
+    # todo use set from main
+  end
 end

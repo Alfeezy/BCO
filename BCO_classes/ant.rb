@@ -8,7 +8,7 @@ class Ant
   def initialize(start, goal, pheromone_flavor)
     @tour_memory = []
     @goal = goal
-    @current_location = starting_location
+    @current_location = start
     @pheromone_flavor = pheromone_flavor
   end
 

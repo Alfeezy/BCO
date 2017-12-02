@@ -11,10 +11,11 @@ class Road
 
   # constructs new road object
   # precondition: parameters are gucci
-  def initialize(loc1, loc2, distance)
+  def initialize(loc1, loc2, distance, id)
 		@loc1 = loc1
 	  @loc2 = loc2
 		@distance = distance
+    @id = id
 	end
 
 	# compares two roads to see if they are equal

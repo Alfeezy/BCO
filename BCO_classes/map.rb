@@ -20,7 +20,7 @@ class Map
 
   def bus_distance 
     ant_storage.each do |key, val|
-      total_distance += (key.distance)*((val+19)/20)
+      total_distance += key.distance * ((val + 19) / 20)
     end
   end
 end

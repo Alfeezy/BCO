@@ -1,79 +1,79 @@
-Blue Mountains	1250
-Grey Havens	1200
-White Towers	1150
-Michel Delving	1075
-Lake Evendim	1025
-Fornost	925
-Hobbiton	1050
-Brandy Hall	1000
-Bree	900
-Sarn Ford	975
-Weathertop	825
-Rivendell	580
-Caradhras	550
-North Pass	500
-Carrock	450
-Gladden Fields	500
-Lothlorien	660
-Isengard	890
-Moria	620
-Dol Guldur	500
-Wood Elves	275
-Esgaroth	175
-Erebor	200
-Dale	180
-Iron Hills	0
+Blue Mountains
+Grey Havens
+White Towers
+Michel Delving
+Lake Evendim
+Fornost
+Hobbiton
+Brandy Hall
+Bree
+Sarn Ford
+Weathertop
+Rivendell
+Caradhras
+North Pass
+Carrock
+Gladden Fields
+Lothlorien
+Isengard
+Moria
+Dol Guldur
+Wood Elves
+Esgaroth
+Erebor
+Dale
+Iron Hills
 #Roads
-Blue Mountains	Lake Evendim	250	0	41
-Blue Mountains	Michel Delving	270	65	15
-Blue Mountains	White Towers	225	75	21
-Blue Mountains	Grey Havens	240	75	21
-Lake Evendim	Fornost	85	11	64
-Lake Evendim	Michel Delving	110	2	55
-Grey Havens	White Towers	100	95	8
-Grey Havens	Sarn Ford	270	30	12
-White Towers	Michel Delving	40	54	7
-White Towers	Hobbiton	70	62	6
-Michel Delving	Hobbiton	35	87	1
-Michel Delving	Brandy Hall	80	79	6
-Hobbiton	Brandy Hall	50	73	7
-Hobbiton	Bree	100	65	9
-Hobbiton	Sarn Ford	130	47	27
-Brandy Hall Bree	100	65	9
-Bree	Fornost	115	41	38
-Bree	Weathertop	100	36	67
-Bree	Sarn Ford	105	40	35
-Fornost	Weathertop	160	23	65
-Fornost	Rivendell	375	14	58
-Sarn Ford	Weathertop	180	13	61
-Sarn Ford	Rivendell	400	15	55
-Sarn Ford	Isengard	599	9	72
-Weathertop	Rivendell	230	50	45
-Rivendell	North Pass	100	2	65
-Rivendell	Caradhras	60	25	69
-Rivendell Moria	180	15	90
-Rivendell Isengard	500	12	85
-North Pass	Carrock	80	0	75
-Caradhras	Carrock	70	0	78
-Caradhras	Gladden Fields	150	12	65
-Caradhras	Lothlorien	300	32	55
-Moria	Gladden Fields	140	16	85
-Moria	Lothlorien	20	21	72
-Gladden Fields	Esgaroth	400	0	63
-Gladden Fields	Dol Guldur	175	2	82
-Gladden Fields	Lothlorien	190	18	62
-Lothlorien	Dol Guldur	175	2	82
-Lothlorien	Isengard	240	28	80
-Carrock	Wood Elves	175	12	64
-Carrock	Erebor	250	18	75
-Carrock	Esgaroth	240	24	75
-Carrock	Dol Guldur	300	0	85
-Dol Guldur	Isengard	390	0	83
-Wood Elves	Dale	90	84	31
-Wood Elves	Erebor	100	90	31
-Esgaroth	Dale	30	95	10
-Esgaroth	Erebor	50	98	8
-Esgaroth	Iron Hills	175	82	38
-Dale	Erebor	10	99	5
-Dale	Iron Hills	180	87	35
-Erebor	Iron Hills	200	91	35
+Blue Mountains	Lake Evendim	250
+Blue Mountains	Michel Delving	270
+Blue Mountains	White Towers	225
+Blue Mountains	Grey Havens	240
+Lake Evendim	Fornost	85
+Lake Evendim	Michel Delving	110
+Grey Havens	White Towers	100
+Grey Havens	Sarn Ford	270
+White Towers	Michel Delving	40
+White Towers	Hobbiton	70
+Michel Delving	Hobbiton	35
+Michel Delving	Brandy Hall	80
+Hobbiton	Brandy Hall	50
+Hobbiton	Bree	100
+Hobbiton	Sarn Ford	130
+Brandy Hall Bree	100
+Bree	Fornost	115
+Bree	Weathertop	100
+Bree	Sarn Ford	105
+Fornost	Weathertop	160
+Fornost	Rivendell	375
+Sarn Ford	Weathertop	180
+Sarn Ford	Rivendell	400
+Sarn Ford	Isengard	599
+Weathertop	Rivendell	230
+Rivendell	North Pass	100
+Rivendell	Caradhras	60
+Rivendell Moria	180
+Rivendell Isengard	500
+North Pass	Carrock	80
+Caradhras	Carrock	70
+Caradhras	Gladden Fields	150
+Caradhras	Lothlorien	300
+Moria	Gladden Fields	140
+Moria	Lothlorien	20
+Gladden Fields	Esgaroth	400
+Gladden Fields	Dol Guldur	175
+Gladden Fields	Lothlorien	190
+Lothlorien	Dol Guldur	175
+Lothlorien	Isengard	240
+Carrock	Wood Elves	175
+Carrock	Erebor	250
+Carrock	Esgaroth	240
+Carrock	Dol Guldur	300
+Dol Guldur	Isengard	390
+Wood Elves	Dale	90
+Wood Elves	Erebor	100
+Esgaroth	Dale	30
+Esgaroth	Erebor	50
+Esgaroth	Iron Hills	175
+Dale	Erebor	10
+Dale	Iron Hills	180
+Erebor	Iron Hills	200

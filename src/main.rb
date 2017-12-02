@@ -18,7 +18,7 @@ def create_road(string)
   Road.new loc1, loc2, distance
 end
 
-def processInput
+def process_input
   input = File.open('../input.txt', 'r')
   locations = Set.new
   roads = Set.new
@@ -27,20 +27,17 @@ def processInput
   parsing_roads = false
 
   input.each_line do |line|
-    if line.chomp == '#Roads' # or whatever match for header2
-      header1 = false
-      header2 = true
+    if line.chomp == '#Roads'
+      parsing_locations = false
+      parsing_roads = true
       next
     end
 
     locations << create_location(line) && next if parsing_locations
     roads << create_road(line) && next if parsing_roads
   end
-
+  Map.new locations, roads
 end
 
-
-map = processInput
-menu
+map = process_input
 output = File.open('../output.txt', 'w')
-

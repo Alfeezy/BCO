@@ -22,18 +22,19 @@ class Ant
 
       # changes current location to next
       @current_location = @next_location
-      set_pheromones
       out.write @current_location.to_s if should_print
     end
+    set_pheromones
   end
 
   def set_pheromones
     road = nil
     @tour_memory.each_with_index do |location_1, ix|
       location_2 = @tour_memory[ix + 1]
-      road = map.find_road location, location_2
+      road = map.find_road location, location_2 unless location_2.nil?
     end
-    pheromones[road.id.to_s][@pheromone_flavor] = Q / @tour_memory.size - 1
+    pheromones[road][@pheromone_flavor] = Q / @tour_memory.size - 1
+    pheromones
   end
 
   def is_trapped?

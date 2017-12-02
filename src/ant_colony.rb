@@ -1,5 +1,7 @@
 class AntColony
-  def initialize(size = 10, pheromone_flavor)
+  attr_accessor :ants
+  
+  def initialize(pheromone_flavor, size = 10)
     @ants = []
     start = get_random_location
     goal = get_random_location

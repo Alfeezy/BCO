@@ -23,4 +23,11 @@ class Map
       total_distance += key.distance * ((val + 19) / 20)
     end
   end
+
+  def update_pheromones(pheromones, rho)
+    pheromones.each do |road, pheromone|
+      road.pheromone += pheromone
+      road.pheromone *= rho
+    end
+  end
 end

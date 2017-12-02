@@ -40,4 +40,21 @@ def process_input
 end
 
 map = process_input
+should_print = false
 output = File.open('../output.txt', 'w')
+
+colonies = []
+[0..10].each do |colony|
+  colonies << AntColony.new colony
+end
+
+[0..25].each do |cycle|
+  colonies.each do |colony|
+    pheromones = []
+    should_print = true if colony == colonies.last
+    colony.ants.each do |ant|
+      pheromones << ant.move_around should_print, output
+    end
+  end
+  map.update_pheromones pheromones, RHO
+end

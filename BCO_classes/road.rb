@@ -6,41 +6,38 @@ Peak: Ballmer's
 
 
 class Road
-
-	# constructs new road object
-	# Precondition: params hash is formatted correctly
-	def initialize(params)
-		@loc1 = params[:loc1]
-		@loc2 = params[:loc2]
-		@distance = params[:distance]
-		@pheremone = params[:pheremone]
+  # constructs new road object
+  # precondition: parameters are gucci
+  def initialize(loc1, loc2, distance, pheromone)
+		@loc1 = loc1
+	  @loc2 = loc2
+		@distance = distance
+		@pheromone = pheromone
 	end
 	attr_reader :loc1, :loc2
 
 	# compares two roads to see if they are equal
 	# Returns: boolean describing if roads are equals
-	def equals(road2)
-
+	def ==(road2)
 		# uses location class equals method (TODO)
-		road2.loc2.equals(loc1) && road2.loc1.equals(loc2)
+		road2.loc2 == loc1 && road2.loc1 == loc2
 	end
 
-	# evaporates pheremone on this road, in accordance to 
-	def evapPheremone(evapRate)
-		pheremone *= evapRate
+	# evaporates pheomone on this road, in accordance to 
+	def evap_pheromone(evapRate)
+		pheromone *= evapRate
 	end
 
 	# returns String representation of this road 
-	def inspect
-		puts "Road: #{@loc1} <--> #{@loc2}, distance = #{@distance}"
+	def to_s
+		"Road: #{@loc1} <--> #{@loc2}, distance = #{@distance}"
 	end
 
 	# Precondition: location l is at one end of this road
 	# Returns: Location at other end
-	def otherLoc(location)
-
+	def other_loc(location)
 		# uses location class equals method (TODO)
-		if location.equals(loc1)
+		if location == loc1
 			loc2
 		else
 			loc1

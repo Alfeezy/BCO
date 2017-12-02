@@ -1,11 +1,12 @@
 class Ant
   attr_accessor :tour_memory, :goal, :current_location, :pheromone_flavor, 
-                :pheromone_to_lay
+                :pheromone_to_lay, :next_location
 
   def initialize(start, goal, pheromone_flavor, map)
     @tour_memory = []
     @goal = goal
     @current_location = start
+    @next_location = nil
     @pheromone_flavor = pheromone_flavor
     @map = map
   end
@@ -13,7 +14,14 @@ class Ant
   def move_around(should_print, out)
     while @current_location != @goal do
       @tour_memory << @current_location
-      @current_location = pick_next_location
+      @next_location = pick_next_location
+
+      # adds ant to next location, removes from current
+      @next_location.connections << self
+      @current_location.connections.delete(self)
+
+      # changes current location to next
+      @current_location = @next_location
       set_pheromones
       out.write @current_location.to_s if should_print
     end

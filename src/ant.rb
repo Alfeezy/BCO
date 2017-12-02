@@ -50,7 +50,33 @@ class Ant
     end
   end
 
-  def pick_next_location
-    # TODO. This will be different for bus
+  def pick_next_location(alpha, beta)
+    probabilities = {}
+    sigma = 0.0
+    current_location.connections.each do |road|
+      return goal if road.other_loc(current_location) == goal
+      recover_trapped while is_trapped
+      unless road.other_loc(current_location).visited
+        t = road.pheromone ** alpha
+        h = (1.0 / road.distance) ** beta
+        sigma += t * h
+      end
+    end
+
+    current_location.connections.each do |road|
+      unless road.other_loc(current_location).visited
+        t = r.pheromone ** alpha
+        h = (1.0 / road.distance) ** beta
+        prob = t * h / sigma
+        probabilities[road.other_loc(current_location)] = prob
+      end
+    end
+
+    rand = Random.rand
+    running_total = 0
+    probabilities.each do |loc, prob|
+      running_total += prob
+      return loc if running_total > rand
+    end
   end
 end

@@ -44,6 +44,7 @@ should_print = false
 output = File.open('../output.txt', 'w')
 
 colonies = []
+
 [0..10].each do |colony|
   colonies << AntColony.new colony
 end

@@ -28,23 +28,27 @@ public class ACOPathfinder {
     out = new PrintStream(new FileOutputStream("output.txt", true));
     // 25 cycles
     for (int cycle = 0; cycle < 25; cycle++) {
-      ArrayList<Map<Road, Double>> pheromones =
-                                         new ArrayList<Map<Road, Double>>();
+      ArrayList<Map<Road, Double>> pheromones = new ArrayList<Map<Road, Double>>();
       // 10 ants per cycle
+      
       for (int antNo = 0; antNo < 10; antNo++) {
         Ant a = new Ant(startingLocation, ALPHA, BETA, RHO, Q);
+      
         if (cycle == 24 && antNo == 9) print = true;
+      
         a.moveAround(print);
         pheromones.add(a.pheromoneToLay);
         for (Location l : locations) l.visited = false;
       }
+      
       for (Road r : roads) r.evapPheromone(1 - RHO);
+      
       for (Map<Road, Double> antPheromones : pheromones) {
         for (Road r : antPheromones.keySet()) {
           r.pheromone += antPheromones.get(r);
         }
       }
-     }
+    }
   }
 
 	// Presents the user with a menu to choose starting location and heuristic.

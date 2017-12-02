@@ -6,15 +6,16 @@ Peak: Ballmer's
 
 
 class Road
+  attr_reader :loc1, :loc2
+  attr_accessor :pheromones, :id
+
   # constructs new road object
   # precondition: parameters are gucci
-  def initialize(loc1, loc2, distance, pheromone)
+  def initialize(loc1, loc2, distance)
 		@loc1 = loc1
 	  @loc2 = loc2
 		@distance = distance
-		@pheromone = pheromone
 	end
-	attr_reader :loc1, :loc2
 
 	# compares two roads to see if they are equal
 	# Returns: boolean describing if roads are equals
@@ -24,8 +25,8 @@ class Road
 	end
 
 	# evaporates pheomone on this road, in accordance to 
-	def evap_pheromone(evapRate)
-		pheromone *= evapRate
+	def evap_pheromone(ix, evapRate)
+		pheromones[ix] *= evapRate
 	end
 
 	# returns String representation of this road 
@@ -43,8 +44,4 @@ class Road
 			loc1
 		end
 	end
-
-  def self.find_road(location1, location2)
-    # todo use set from main
-  end
 end

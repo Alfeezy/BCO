@@ -31,14 +31,23 @@ class Map
     end
   end
 
-  def update_pheromones(pheromones, rho)
-    pheromones.each do |road, pheromone|
-      road.pheromone += pheromone
-      road.pheromone *= rho
+  def update_pheromones(colonies)
+    colonies.each do |colony|
+      colony.ants.each do |ant|
+        ant.lay_pheromone
+      end
     end
   end
 
   def get_random_location
     @locations.sample
+  end
+
+  def find_road(loc1, loc2)
+    new_road = Road.new(loc1, loc2, 0)
+    @roads.each do |r|
+      return r if new_road == r
+    end
+    nil
   end
 end

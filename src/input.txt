@@ -39,7 +39,7 @@ Michel Delving	Brandy Hall	80
 Hobbiton	Brandy Hall	50
 Hobbiton	Bree	100
 Hobbiton	Sarn Ford	130
-Brandy Hall Bree	100
+Brandy Hall	Bree	100
 Bree	Fornost	115
 Bree	Weathertop	100
 Bree	Sarn Ford	105
@@ -51,8 +51,8 @@ Sarn Ford	Isengard	599
 Weathertop	Rivendell	230
 Rivendell	North Pass	100
 Rivendell	Caradhras	60
-Rivendell Moria	180
-Rivendell Isengard	500
+Rivendell	Moria	180
+Rivendell	Isengard	500
 North Pass	Carrock	80
 Caradhras	Carrock	70
 Caradhras	Gladden Fields	150

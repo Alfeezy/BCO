@@ -3,30 +3,27 @@ require "#{File.dirname(__FILE__)}/ant_colony"
 require "#{File.dirname(__FILE__)}/location"
 require "#{File.dirname(__FILE__)}/map"
 require "#{File.dirname(__FILE__)}/road"
-require 'set'
-
+# TODO: Refactor roads (can we get rid of loc1, loc2?)
+# refactor create_road / string parsing
 ALPHA = 1.0
 BETA = 1.0
 RHO = 0.95
 Q = 100
 
-def create_location(string)
-  Location.new string
-end
-
 def create_road(string, locs)
   loc1, loc2, distance = string.split("\t")
   locs.each do |loc|
     if loc1.is_a?(Location) && loc2.is_a?(Location)
-      return Road.new loc1, loc2, distance
+      return Road.new loc1, loc2, distance.to_i    
     end
     if loc1.is_a?(String) && loc1.strip == loc.name.strip
       loc1 = loc
-    elsif loc2.is_a?(String) && loc2.strip == loc.name.strip
+    end
+    if loc2.is_a?(String) && loc2.strip == loc.name.strip
       loc2 = loc
     end
   end
-  nil
+  Road.new loc1, loc2, distance.to_i
 end
 
 def process_input
@@ -34,12 +31,9 @@ def process_input
   locations = []
   roads = []
 
-  parsing_locations = true
-  parsing_roads = false
-
   input = input.read().split("#Roads\n")
   input[0].each_line do |line|
-    locations << create_location(line) unless line.strip.empty?
+    locations << Location.new(line)
   end
 
   input[1].each_line do |line|
@@ -47,7 +41,6 @@ def process_input
     roads << r unless line.strip.empty?
     roads = roads.compact
   end
-  
   Map.new locations, roads, ALPHA, BETA, RHO, Q
 end
 
@@ -57,20 +50,24 @@ output = File.open('output.txt', 'w')
 
 colonies = []
 
-[0..10].each do |colony|
+for colony in 0..10
   colonies << AntColony.new(map, colony)
   map.roads.each do |road|
-    road.pheromones[colony] = 0
+    road.pheromones[colony] = 0.5
   end
 end
 
-[0..25].each do |cycle|
+for cycle in 0..25
   colonies.each do |colony|
-    pheromones = []
     should_print = true if colony == colonies.last
-    colony.ants.each do |ant|
-      pheromones << ant.move_around(should_print, output)
+    colony.ants.each_with_index do |ant, ix|
+      puts "Cycle #{cycle}, colony #{colony.pheromone_flavor}, ant #{ix}"
+      ant.travel(should_print, output)
     end
   end
-  map.update_pheromones pheromones, RHO
+  # at this point, every ant in every colony has a tour memory
+  map.update_pheromones colonies
+  for colony in 0..10
+    colonies[colony] = AntColony.new(map, colony)
+  end
 end

@@ -1,6 +1,5 @@
 class Ant
-  attr_accessor :tour_memory, :goal, :current_location, :pheromone_flavor, 
-                :pheromone_to_lay, :next_location
+  attr_accessor :tour_memory, :goal, :current_location, :pheromone_flavor
 
   def initialize(start, goal, pheromone_flavor, map)
     @tour_memory = []
@@ -11,30 +10,21 @@ class Ant
     @map = map
   end
 
-  def move_around(should_print, out)
+  def travel(should_print, out)
     while @current_location != @goal do
       @tour_memory << @current_location
-      @next_location = pick_next_location
-
-      # adds ant to next location, removes from current
-      @next_location.connections << self
-      @current_location.connections.delete(self)
-
-      # changes current location to next
-      @current_location = @next_location
-      out.write @current_location.to_s if should_print
-    end
-    set_pheromones
+      @current_location = pick_next_location
+     end
   end
-
-  def set_pheromones
-    road = nil
-    @tour_memory.each_with_index do |location_1, ix|
-      location_2 = @tour_memory[ix + 1]
-      road = map.find_road location, location_2 unless location_2.nil?
+  
+  def lay_pheromone
+    @tour_memory.each_with_index do |loc, ix|
+      if ix < @tour_memory.size - 1
+        loc2 = @tour_memory[ix + 1]
+        road = @map.find_road loc, loc2
+        road.pheromones[@pheromone_flavor] = Q / @tour_memory.size - 1
+      end
     end
-    pheromones[road][@pheromone_flavor] = Q / @tour_memory.size - 1
-    pheromones
   end
 
   def is_trapped?
@@ -53,7 +43,7 @@ class Ant
   def pick_next_location
     probabilities = {}
     sigma = 0.0
-    current_location.connections.each do |road|
+    @current_location.connections.each do |road|
       return goal if road.other_loc(current_location) == goal
       recover_trapped while is_trapped?
       unless road.other_loc(current_location).visited
@@ -63,11 +53,11 @@ class Ant
       end
     end
 
-    current_location.connections.each do |road|
+    @current_location.connections.each do |road|
       unless road.other_loc(current_location).visited
         t = road.pheromones[pheromone_flavor] ** @map.alpha
         h = (1.0 / road.distance) ** @map.beta
-        prob = t * h / (sigma + 0.0000001)
+        prob = (t * h) / (sigma + 0.0000001)
         probabilities[road.other_loc(current_location)] = prob
       end
     end
@@ -75,7 +65,6 @@ class Ant
     rand = Random.rand
     running_total = 0
     probabilities.each do |loc, prob|
-      puts loc.to_s + " " + prob.to_s
       running_total += prob
       return loc if running_total > rand
     end

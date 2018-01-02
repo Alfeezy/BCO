@@ -14,15 +14,15 @@ class Road
   def initialize(loc1, loc2, distance)
 		@loc1 = loc1
 	  @loc2 = loc2
-		@distance = distance.to_i
+		@distance = distance
 		@pheromones = {}
 	end
 
 	# compares two roads to see if they are equal
 	# Returns: boolean describing if roads are equals
-	def ==(road2)
-		# uses location class equals method (TODO)
-		road2.loc2 == loc1 && road2.loc1 == loc2
+	def ==(other)
+		eq = [loc1, loc2].permutation.map {|a| a == [other.loc1, other.loc2] }
+		eq.include? true
 	end
 
 	# evaporates pheomone on this road, in accordance to 

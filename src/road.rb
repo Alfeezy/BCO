@@ -6,16 +6,16 @@ Peak: Ballmer's
 
 
 class Road
-  attr_reader :loc1, :loc2
-  attr_accessor :pheromones, :id
+  attr_reader :loc1, :loc2, :distance
+  attr_accessor :pheromones
 
   # constructs new road object
   # precondition: parameters are gucci
-  def initialize(loc1, loc2, distance, id)
+  def initialize(loc1, loc2, distance)
 		@loc1 = loc1
 	  @loc2 = loc2
-		@distance = distance
-    @id = id
+		@distance = distance.to_i
+		@pheromones = {}
 	end
 
 	# compares two roads to see if they are equal

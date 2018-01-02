@@ -1,11 +1,12 @@
 class Location
-  attr_accessor :connections, :name, :visited, :fn, :id,
+
+  attr_accessor :connections, :name, :visited
 
   def initialize(name)
-    @name = name
-    @connections = Set.new
+    @name = name.strip
+    @connections = []
     @visited = false
-    @ants = Set.new
+    @ants = []
   end
 
   def ==(other)
@@ -16,8 +17,12 @@ class Location
     @name
   end
 
-  def add_road(road)
-    @connections << road
+  def add_roads(roads)
+    roads.each do |road|
+      if self == road.loc1 or self == road.loc2
+        @connections << road
+      end
+    end
   end
 
   def display_roads

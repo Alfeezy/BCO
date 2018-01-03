@@ -53,11 +53,11 @@ colonies = []
 for colony in 0..10
   colonies << AntColony.new(map, colony)
   map.roads.each do |road|
-    road.pheromones[colony] = 0.5
+    road.pheromones[colony] = 50
   end
 end
 
-for cycle in 0..25
+for cycle in 0..10
   colonies.each do |colony|
     should_print = true if colony == colonies.last
     colony.ants.each_with_index do |ant, ix|

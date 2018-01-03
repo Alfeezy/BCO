@@ -32,8 +32,27 @@ class Map
   end
 
   def update_pheromones(colonies)
-    colonies.each do |colony|
-      colony.ants.each do |ant|
+    lay_pheromones(colonies)
+    evap_pheromones
+    roads.each do |road|
+      puts "After lay and evap: "
+      puts "#{road}:"
+      puts "#{road.pheromones}"
+    end
+  end
+
+  def evap_pheromones
+    @roads.each do |r|
+      r.pheromones.each do |colony, pher|
+        pher *= @rho
+      end
+    end
+  end
+
+  def lay_pheromones(colonies)
+    colonies.each_with_index do |colony, cix|
+      colony.ants.each_with_index do |ant, aix|
+        puts "Colony #{cix}, ant #{aix} is laying down pheromone:"
         ant.lay_pheromone
       end
     end

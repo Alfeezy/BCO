@@ -25,11 +25,6 @@ class Road
 		eq.include? true
 	end
 
-	# evaporates pheomone on this road, in accordance to 
-	def evap_pheromone(ix, evapRate)
-		pheromones[ix] *= evapRate
-	end
-
 	# returns String representation of this road 
 	def to_s
 		"Road: #{@loc1} <--> #{@loc2}, distance = #{@distance}"

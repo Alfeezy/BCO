@@ -7,7 +7,7 @@ class AntColony
     start = map.get_random_location
     goal = map.get_random_location
     @pheromone_flavor = pheromone_flavor
-    [0..size].each do |_|
+    for i in 0..size
       @ants << Ant.new(start, goal, @pheromone_flavor, map)
     end
   end

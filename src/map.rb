@@ -52,7 +52,6 @@ class Map
   def lay_pheromones(colonies)
     colonies.each_with_index do |colony, cix|
       colony.ants.each_with_index do |ant, aix|
-        puts "Colony #{cix}, ant #{aix} is laying down pheromone:"
         ant.lay_pheromone
       end
     end

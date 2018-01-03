@@ -18,14 +18,20 @@ class Ant
   end
   
   def lay_pheromone
-    @tour_memory.each_with_index do |loc, ix|
-      if ix < @tour_memory.size - 1
-        loc2 = @tour_memory[ix + 1]
-        road = @map.find_road loc, loc2
-        road.pheromones[@pheromone_flavor] += Q / @tour_memory.size - 1
+    if @tour_memory.size == 2
+      loc = @tour_memory[0]
+      loc2 = @tour_memory[1]
+      road = @map.find_road loc, loc2
+      road.pheromones[@pheromone_flavor] += Q
+    else
+      @tour_memory.each_with_index do |loc, ix|
+        if ix < @tour_memory.size - 1
+          loc2 = @tour_memory[ix + 1]
+          road = @map.find_road loc, loc2
+          road.pheromones[@pheromone_flavor] += Q / (@tour_memory.size - 1)
+        end
       end
     end
-    puts "#{Q / @tour_memory.size - 1} over #{@tour_memory.size - 1} roads"
   end
 
   def is_trapped?

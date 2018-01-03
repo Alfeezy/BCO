@@ -8,7 +8,7 @@ require "#{File.dirname(__FILE__)}/road"
 ALPHA = 1.0
 BETA = 1.0
 RHO = 0.95
-Q = 100
+Q = 100.0
 
 def create_road(string, locs)
   loc1, loc2, distance = string.split("\t")

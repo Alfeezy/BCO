@@ -1,10 +1,11 @@
 class Ant
-  attr_accessor :tour_memory, :goal, :current_location, :pheromone_flavor
+  attr_accessor :tour_memory, :start, :goal, :current_location, :pheromone_flavor
 
   def initialize(start, goal, pheromone_flavor, map)
     @tour_memory = []
     @goal = goal
     @current_location = start
+    @start = start
     @next_location = nil
     @pheromone_flavor = pheromone_flavor
     @map = map

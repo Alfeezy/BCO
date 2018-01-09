@@ -17,6 +17,10 @@ class Location
     @name
   end
 
+  def to_json(*args)
+    '"' + @name + '"'
+  end
+
   def add_roads(roads)
     roads.each do |road|
       if self == road.loc1 or self == road.loc2

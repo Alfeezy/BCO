@@ -30,6 +30,14 @@ class Road
 		"Road: #{@loc1} <--> #{@loc2}, distance = #{@distance}"
 	end
 
+	def to_hash
+		{ destinations: [@loc1, @loc2], distance: @distance }
+	end
+
+	def to_json(*args)
+		to_hash.to_json
+	end
+
 	# Precondition: location l is at one end of this road
 	# Returns: Location at other end
 	def other_loc(location)

@@ -15,6 +15,14 @@ class Map
     end
   end
 
+  def to_hash
+    { locations: @locations, roads: @roads }
+  end
+
+  def to_json(*args)
+    to_hash.to_json
+  end
+
   def ant_storage
     bus_routes = Hash[@roads.map {|x| [x, 0]}]
     @locations.each do |location|
@@ -34,11 +42,6 @@ class Map
   def update_pheromones(colonies)
     lay_pheromones(colonies)
     evap_pheromones
-    roads.each do |road|
-      puts "After lay and evap: "
-      puts "#{road}:"
-      puts "#{road.pheromones}"
-    end
   end
 
   def evap_pheromones

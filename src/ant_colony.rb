@@ -2,7 +2,7 @@ class AntColony
   attr_reader :pheromone_flavor, :start, :goal
   attr_accessor :ants
   
-  def initialize(map, pheromone_flavor, size = 10)
+  def initialize(map, pheromone_flavor, size)
     @ants = []
     @size = size
     @start = map.get_random_location

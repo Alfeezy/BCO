@@ -20,7 +20,7 @@ class Map
   end
 
   def to_json(*args)
-    to_hash.to_json
+    to_hash.to_json(*args)
   end
 
   def ant_storage

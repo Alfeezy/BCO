@@ -1,10 +1,3 @@
-=begin
-Name: Bastien Gliech
-Scrum: Lord
-Peak: Ballmer's
-=end
-
-
 class Road
   attr_reader :loc1, :loc2, :distance
   attr_accessor :pheromones
@@ -34,8 +27,12 @@ class Road
 		{ destinations: [@loc1, @loc2], distance: @distance }
 	end
 
-	def to_json(*args)
-		to_hash.to_json
+	def to_hash_with_pheromone
+		to_hash.merge pheromones: @pheromones
+	end
+
+	def to_json(with_pheromone, *args)
+		(with_pheromone ? to_hash_with_pheromone : to_hash).to_json(*args)
 	end
 
 	# Precondition: location l is at one end of this road
